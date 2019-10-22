@@ -8,12 +8,11 @@ const WorkoutForm = (props) => {
     workoutName: '',
     workoutDay: '', 
     muscle: '',
-    exercises: [{
     exercise: '',
     weight: '',
     sets: '',
     reps: '',
-    }]
+    
   });
 
   const update = (e) => {
@@ -28,8 +27,6 @@ const WorkoutForm = (props) => {
         })
     }
 
-
-
   return (
     <>
     <div>
@@ -37,7 +34,7 @@ const WorkoutForm = (props) => {
       <form onSubmit={update}>
         <input
         type="text"
-        name="workout"
+        name="workoutName"
         value={workout.workoutName}
         placeholder="workout name"
         onChange={handleChange}
