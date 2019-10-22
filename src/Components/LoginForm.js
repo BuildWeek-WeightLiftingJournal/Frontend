@@ -33,7 +33,8 @@ export default class LoginForm extends React.Component {
   render() {
     return (
       <div className="container">
-      <form onSubmit={this.handleSubmit}>
+        <h2 className="title">Login</h2>
+      <form className="form" onSubmit={this.handleSubmit}>
         <label className="label">Username:
         <input className="input"
           type="text" 
