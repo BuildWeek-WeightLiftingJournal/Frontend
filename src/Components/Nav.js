@@ -28,7 +28,7 @@ const NavRight = styled.div`
     align-items: center;
 `;
 
-const NavLink = styled.a`
+const NavbarLink = styled.a`
     padding-left: 1em;
     text-decoration: none;
     color: white;
@@ -52,10 +52,10 @@ const Nav = () => {
                <NavTitle>Get Swole</NavTitle>
            </NavLeft>
            <NavRight>
-               <NavLink href="#">Home</NavLink>
-               <NavLink href="about.html">About</NavLink>
-               <NavLink href="#">Features</NavLink>
-               <NavLink href="#">FAQ</NavLink>
+               <NavbarLink href="#">Home</NavbarLink>
+               <NavbarLink href="about.html">About</NavbarLink>
+               <NavbarLink href="#">Features</NavbarLink>
+               <NavbarLink href="#">FAQ</NavbarLink>
            </NavRight>
        </NavBar>
     );
