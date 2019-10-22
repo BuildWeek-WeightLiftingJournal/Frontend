@@ -9,7 +9,7 @@ function App() {
   return (
     <div className="App">
       <Nav />
-      <Route path='/' render={props => <RegistrationForm {...props} />} />
+      <Route exact path='/' render={props => <RegistrationForm {...props} />} />
       <Route path='/login' render={props => <LoginForm {...props} />} />
     </div>
   );
