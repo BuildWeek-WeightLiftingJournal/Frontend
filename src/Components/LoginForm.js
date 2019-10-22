@@ -51,7 +51,9 @@ export default class LoginForm extends React.Component {
           value={this.state.password} 
           onChange={this.handleChange} required />
           </label>
+        <div>
         <button className="button">Submit</button>
+        </div>
       </form>
       </div>
     );
