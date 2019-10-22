@@ -10,3 +10,12 @@ const WorkoutCard = ({ workout }) => {
    );
  };
 export default WorkoutCard;
+
+// day	
+// exerciseName
+// muscleGroup	
+// reps	
+// sets	
+// title	
+// weight	
+// workoutid	
