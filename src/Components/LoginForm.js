@@ -27,7 +27,7 @@ const LoginForm = props => {
         console.log(res);
         localStorage.setItem('token', res.data.access_token);
         //props.setUserID(res.data.<whatever the user id is>)
-        props.history.push('/users');
+        props.history.push('/workoutlist');
       })
       .catch(err => console.dir(err));
     e.preventDefault();
@@ -61,51 +61,5 @@ const LoginForm = props => {
     );
   }
 
+
 export default LoginForm;
-
-// import React, { useState }from "react";
-// import axios from "axios";
-
-// const Login = props => {
-//  const [userCredentials, setUserCredentials] = useState({username:'', password:''})
-//  const handleChange = event => {
-//    setUserCredentials(
-//      {
-//        ...userCredentials,
-//        [event.target.name]: event.target.value
-//      }
-//    )
-//  }
-//  const onSubmit = event => {
-//     event.preventDefault();
-//     axios.post('https://ar-journal.herokuapp.com/login', `grant_type=password&username=${userCredentials.username}&password=${userCredentials.password}`, {headers: { Authorization: 'Basic bGFtYmRhLWNsaWVudDpsYW1iZGEtc2VjcmV0', 'Content-Type': 'application/x-www-form-urlencoded'}})
-//         .then(res => {
-//             console.log("response", res);
-//             localStorage.setItem('token', res.data.access_token)
-//             props.history.push('/mainpage')
-//             }
-//         )
-//         .catch(err => console.log(err.response))
-// }
-
-//  return (
-//    <div className="container">
-//      <form onSubmit={onSubmit}>
-//        <input className="input"
-//         type="text" 
-//         name="username" 
-//         placeholder="Username" 
-//         value={userCredentials.username} 
-//         onChange={handleChange} />
-//        <input className="input"
-//         type="password" 
-//         name="password" 
-//         placeholder="Password" 
-//         value={userCredentials.password} 
-//         onChange={handleChange} />
-//        <button className="button"> Log In </button>
-//      </form>
-//    </div>
-//  );
-// }
-// export default Login;

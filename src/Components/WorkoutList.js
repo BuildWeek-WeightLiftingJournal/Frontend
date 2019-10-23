@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { axiosWithAuth } from '../utils/axiosWithAuth';
 import WorkoutCard from './WorkoutCard';
+import AddWorkoutForm from './AddWorkoutForm';
+
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
@@ -25,6 +27,7 @@ const AddWorkoutButton = styled.button`
   }
 `;
 
+
 function WorkoutList(props) {
   const [workouts, setWorkouts] = useState([]);
 
@@ -32,7 +35,7 @@ function WorkoutList(props) {
     axiosWithAuth()
       .get('https://ar-journal.herokuapp.com/users/userworkout', {headers: {"Content-Type": "application/json" }})
       .then(res => {
-        console.log(res);
+        console.log(res.data);
         setWorkouts(res.data);
       })
       .catch(err => console.error(err));
@@ -40,6 +43,8 @@ function WorkoutList(props) {
 
   return (
     <div>
+
+
       <div>
         <h2>Weight Lifting Journal</h2>
         <Link to='/workoutform'><AddWorkoutButton>Add Workout</AddWorkoutButton></Link>
@@ -49,30 +54,9 @@ function WorkoutList(props) {
         <WorkoutCard workout={workout} />
         ))}
       </List>
-      {/* <AddWorkOut /> */}
     </div>
     
   );
 }
 
 export default WorkoutList;
-
-// import React, { useState } from 'react';
-// import axios from 'axios';
-// export default function RegisterForm(props) {
-//     const [userCredentials, setCredentials] = useState({
-//         username: "",
-//         password: "",
-//         primaryemail: ""
-//     });
-//     const submitHandler = event => {
-//         event.preventDefault();
-//         axios.post("https://ar-journal.herokuapp.com/createnewuser", userCredentials,  {headers: {"Content-Type": "application/json" }})
-//             .then(res => {
-//                 console.log(res);
-//                 props.history.push("/");
-//             })
-//             .catch(err => console.log(err.response))
-//     }
-//     const changeHandler = event => {
-//         setCredentials({ ...userCredentials, [event.target.name]: event.target.value })

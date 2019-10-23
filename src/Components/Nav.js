@@ -34,6 +34,10 @@ const Logo = styled.img`
     height: 80%;
 `;
 
+const StyledLink = styled(Link)`
+    padding-right: 12px;
+`;
+
 const Nav = () => {
     return (
         <NavBar>
@@ -44,7 +48,10 @@ const Nav = () => {
                <NavTitle>Get Swole</NavTitle>
            </NavLeft>
            <NavRight>
-               <Link to="/">Sign Up</Link>
+               <StyledLink to="/">Sign Up</StyledLink>
+               <StyledLink to="/login">Login</StyledLink>
+               <StyledLink to="/workoutlist">My Workouts</StyledLink>
+
            </NavRight>
        </NavBar>
     );
