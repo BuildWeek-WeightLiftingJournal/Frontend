@@ -51,7 +51,7 @@ function WorkoutList(props) {
       </List>
       {/* <AddWorkOut /> */}
     </div>
-    //<Route 
+    
   );
 }
 
