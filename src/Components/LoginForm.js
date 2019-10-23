@@ -1,21 +1,22 @@
-import React from 'react';
+import React, {useState} from 'react';
+
 const axios = require('axios');
 // const oauth = require('axios-oauth-client');
-export default class LoginForm extends React.Component {
-  state = {
+const LoginForm = props => {
+  
+  const [user, setUser] = useState({
     username: '',
     password: ''
-  }
-  constructor() {
-    super();
-  }
-  handleChange = e => {
-    this.setState({
+  });
+
+  const handleChange = e => {
+    setUser({...user,
       [e.target.name]: e.target.value
     });
   }
-  handleSubmit = e => {
-    axios.post('https://ar-journal.herokuapp.com/login', `grant_type=password&username=${this.state.username}&password=${this.state.password}`, {
+
+  const handleSubmit = e => {
+    axios.post('https://ar-journal.herokuapp.com/login', `grant_type=password&username=${user.username}&password=${user.password}`, {
       headers: {
         // btoa is converting our client id/client secret into base64
         Authorization: `Basic ${btoa('lambda-client:lambda-secret')}`,
@@ -25,31 +26,32 @@ export default class LoginForm extends React.Component {
       .then(res => {
         console.log(res);
         localStorage.setItem('token', res.data.access_token);
-        this.props.history.push('/users');
+        //props.setUserID(res.data.<whatever the user id is>)
+        props.history.push('/users');
       })
       .catch(err => console.dir(err));
     e.preventDefault();
   }
-  render() {
+
     return (
       <div className="container">
         <h2 className="title">Login</h2>
-      <form className="form" onSubmit={this.handleSubmit}>
+      <form className="form" onSubmit={handleSubmit}>
         <label className="label">Username:
         <input className="input"
           type="text" 
           name="username"
           placeholder="Username" 
-          value={this.state.username} 
-          onChange={this.handleChange} required />
+          value={user.username} 
+          onChange={handleChange} required />
           </label>
           <label className="label">Password:
         <input className="input"
           type="password" 
           name="password"
           placeholder="Password" 
-          value={this.state.password} 
-          onChange={this.handleChange} required />
+          value={user.password} 
+          onChange={handleChange} required />
           </label>
         <div>
         <button className="button">Submit</button>
@@ -58,7 +60,8 @@ export default class LoginForm extends React.Component {
       </div>
     );
   }
-}
+
+export default LoginForm;
 
 // import React, { useState }from "react";
 // import axios from "axios";
