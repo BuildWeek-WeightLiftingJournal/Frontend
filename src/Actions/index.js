@@ -1,5 +1,4 @@
 import { axiosWithAuth } from '../utils/axiosWithAuth';
-import axios from 'axios';
 
 
 // //signup actions
@@ -45,13 +44,12 @@ export const FETCHING_WORKOUTS_START = 'FETCHING_WORKOUTS_START';
 export const FETCHING_WORKOUTS_SUCCESS = 'FETCHING_WORKOUTS_SUCCESS';
 export const FETCHING_WORKOUTS_FAILURE = 'FETCHING_WORKOUTS_FAILURE';
 
-export const getWorkout = (userCredentials, history) => {
+export const getWorkout = () => dispatch => {
     dispatch({ type: FETCHING_WORKOUTS_START });
     axiosWithAuth()
-        .get('https://ar-journal.herokuapp.com/swagger-ui.html#/workout/all', userCredentials)
+        .get('https://ar-journal.herokuapp.com/swagger-ui.html#/workout/all')
         .then(res => {
             dispatch({ type: FETCHING_WORKOUTS_SUCCESS });
-            // history.push('/workout')
         })
         .catch(err => {
             dispatch({ type: FETCHING_WORKOUTS_FAILURE, payload: err })
@@ -71,9 +69,24 @@ export const UPDATING_WORKOUT_START = 'UPDATING_WORKOUT_START';
 export const UPDATING_WORKOUT_SUCCESS = 'UPDATING_WORKOUT_SUCCESS';
 export const UPDATING_WORKOUT_FAILURE = 'UPDATING_WORKOUT_FAILURE';
 
+export const updateWorkout = id => dispatch=> {
+    dispatch({ type: UPDATING_WORKOUT_START });
+    axiosWithAuth()
+        .put(`https://ar-journal.herokuapp.com/swagger-ui.html#/workout/update/${id}`)
+}
 
 
 //delete workout actions
 export const DELETING_WORKOUT_START = 'DELETING_WORKOUT_START';
 export const DELETING_WORKOUT_SUCCESS = 'DELETING_WORKOUT_SUCCESS';
 export const DELETING_WORKOUT_FAILURE = 'DELETING_WORKOUT_FAILURE';
+
+export const deleteWorkout = id => () => {
+    axiosWithAuth()
+        .delete(`https://ar-journal.herokuapp.com/swagger-ui.html#/workout/delete/${id}`)
+        .then(res => {
+            localStorage.removeItem('workoutid');
+            console.log('workout was deleted', res);
+        })
+        .catch(err => console.log('delete workout error', err))
+};
