@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import axios from "axios";
 
 
-const WorkoutForm = (props) => {
+const AddWorkoutForm = (props) => {
   
   const [workout, setworkout] = useState({
     title: '',
@@ -20,7 +20,7 @@ const WorkoutForm = (props) => {
     axios.post("https://ar-journal.herokuapp.com/workout/new", workout,  {headers: {"Content-Type": "application/json" }})
             .then(res => {
                 console.log(res);
-                props.history.push("/users");
+                props.history.push('/users');
             })
             .catch(err => console.log(err.response))
     
@@ -68,7 +68,7 @@ const WorkoutForm = (props) => {
         />
         </label>
 
-        <label className="label">Weight:
+        <label className="label">Weight (lbs):
         <input className="input"
         type="number"
         name="weight"
@@ -114,4 +114,4 @@ const WorkoutForm = (props) => {
   );
 };
 
-export default WorkoutForm;
+export default AddWorkoutForm;
