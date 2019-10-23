@@ -8,12 +8,11 @@ const WorkoutForm = (props) => {
     workoutName: '',
     workoutDay: '', 
     muscle: '',
-    exercises: [{
     exercise: '',
     weight: '',
     sets: '',
     reps: '',
-    }]
+    
   });
 
   const update = (e) => {
@@ -27,8 +26,6 @@ const WorkoutForm = (props) => {
             [e.target.name]: e.target.value
         })
     }
-
-
 
   return (
     <>
