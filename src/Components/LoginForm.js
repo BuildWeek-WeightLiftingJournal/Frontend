@@ -27,7 +27,7 @@ const LoginForm = props => {
         console.log(res);
         localStorage.setItem('token', res.data.access_token);
         //props.setUserID(res.data.<whatever the user id is>)
-        props.history.push('/users');
+        props.history.push('/workoutlist');
       })
       .catch(err => console.dir(err));
     e.preventDefault();
@@ -60,5 +60,6 @@ const LoginForm = props => {
       </div>
     );
   }
+
 
 export default LoginForm;

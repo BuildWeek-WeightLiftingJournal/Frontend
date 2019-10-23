@@ -1,10 +1,8 @@
-
-import React, { useState } from "react";
-
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 
 
-const AddWorkoutForm = (props) => {
+const EditWorkoutForm = (props) => {
   
   const [workout, setworkout] = useState({
     title: '',
@@ -22,7 +20,7 @@ const AddWorkoutForm = (props) => {
     axios.post("https://ar-journal.herokuapp.com/workout/new", workout,  {headers: {"Content-Type": "application/json" }})
             .then(res => {
                 console.log(res);
-                props.history.push('/workoutlist');
+                props.history.push('/users');
             })
             .catch(err => console.log(err.response))
     
@@ -38,7 +36,7 @@ const AddWorkoutForm = (props) => {
   return (
     <>
     <div className="container">
-    <h1>Add Workout</h1>
+    <h1>Edit Workout</h1>
       <form className="update-form" onSubmit={update}>
         <label className="label"> Workout Name:
         <input className="input"
@@ -108,7 +106,7 @@ const AddWorkoutForm = (props) => {
         </label>
 
         <div>
-        <button className="button">Add</button>
+        <button className="button">Submit</button>
         </div>
       </form>
       </div>
@@ -116,7 +114,4 @@ const AddWorkoutForm = (props) => {
   );
 };
 
-
-export default AddWorkoutForm;
-
-
+export default EditWorkoutForm;
