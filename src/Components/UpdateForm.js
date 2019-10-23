@@ -29,65 +29,79 @@ const WorkoutForm = (props) => {
 
   return (
     <>
-    <div>
+    <div className="container">
     <h1>Update</h1>
-      <form onSubmit={update}>
-        <input
+      <form className="update-form" onSubmit={update}>
+        <label className="label"> Workout Name:
+        <input className="input"
         type="text"
         name="workoutName"
         value={workout.workoutName}
-        placeholder="workout name"
+        placeholder="Workout Name"
         onChange={handleChange}
         />
+        </label>
       
-      <input
+      <label className="label">Workout Day:
+      <input className="input"
         type="text"
         name="workoutDay"
         value={workout.workoutDay}
-        placeholder="workout Day"
+        placeholder="Workout Day"
         onChange={handleChange}
         />
+        </label>
 
-        <input
+        <label className="label">Exercise Name:
+        <input className="input"
         type="text"
         name="exercise"
         value={workout.exercise}
         placeholder="Exercise Name"
         onChange={handleChange}
         />
+        </label>
 
-        <input
-        type="text"
+        <label className="label">Weight:
+        <input className="input"
+        type="number"
         name="weight"
         value={workout.weight}
-        placeholder="weight"
+        placeholder="Weight"
         onChange={handleChange}
         />
+        </label>
 
-        <input
-        type="text"
+        <label className="label">Sets:
+        <input className="input"
+        type="number"
         name="sets"
         value={workout.sets}
-        placeholder="sets"
+        placeholder="Sets"
         onChange={handleChange}
         />
+        </label>
 
-        <input
-        type="text"
+        <label className="label">Reps:
+        <input className="input"
+        type="number"
         name="reps"
         value={workout.reps}
-        placeholder="reps"
+        placeholder="Reps"
         onChange={handleChange}
         />
+        </label>
 
-
-        <select name="muscle">
+        <label className="label">Body Part:
+        <select className="select-input" name="muscle">
         <option value="upperBody">Upper Body</option>
         <option value="lowerBody">lower Body</option>
         </select>
+        </label>
 
-      
-        <button>Update!</button>
+        <div>
+        <button className="button">Update!</button>
+        </div>
       </form>
       </div>
     </>
