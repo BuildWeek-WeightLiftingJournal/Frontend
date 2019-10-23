@@ -62,6 +62,20 @@ export const POSTING_WORKOUT_START = 'POSTING_WORKOUT_START';
 export const POSTING_WORKOUT_SUCCESS = 'POSTING_WORKOUT_SUCCESS';
 export const POSTING_WORKOUT_FAILURE = 'POSTING_WORKOUT_FAILURE';
 
+export const addWorkout = workout => dispatch => {
+    dispatch({ type: POSTING_WORKOUT_START });
+    axiosWithAuth()
+        .post('https://ar-journal.herokuapp.com/swagger-ui.html#/workout/new', workout)
+        .then(res => {
+            dispatch({ type: POSTING_WORKOUT_SUCCESS });
+            localStorage.setItem('workoutId', res.data.id)
+            console.log(res);
+        })
+        .catch(err => {
+            dispatch({ type: POSTING_WORKOUT_FAILURE });
+            console.log('post workout error', err);
+        })
+};
 
 
 //edit workout actions

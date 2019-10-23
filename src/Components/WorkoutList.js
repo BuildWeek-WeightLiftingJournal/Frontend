@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { axiosWithAuth } from '../utils/axiosWithAuth';
 import WorkoutCard from './WorkoutCard';
-import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
 
-function WorkoutList() {
+
+function WorkoutList(props) {
   const [workouts, setWorkouts] = useState([]);
 
   useEffect(() => {
@@ -21,7 +20,7 @@ function WorkoutList() {
     <div>
       <h2>Weight Lifting Journal</h2>
       {workouts.map(workout => (
-        <WorkoutCard workout={workout} />
+        <WorkoutCard workout={workout} props={props} />
       ))}
       {/* <AddWorkOut /> */}
     </div>
