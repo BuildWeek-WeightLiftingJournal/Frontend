@@ -31,9 +31,31 @@
 
 }
 
+.update-form {
+  display: flex;
+  flex-direction: column;
+  max-width: 550px;
+  width: 55%;
+  height: 50vh;
+  justify-content: space-evenly;
+  padding: 2%;
+  background: #35373B;
+  box-shadow: 0 4px 8px 0 black;
+  border-radius: 15px;
+
+}
+
 .input {
   margin-left: 5px;
   width: 70%;
+  padding: 2%;
+  border: 1px solid #35373B;
+  border-radius: 10px;
+}
+
+.select-input {
+  /* margin-left: 5px; */
+  width: 74%;
   padding: 2%;
   border: 1px solid #35373B;
   border-radius: 10px;
