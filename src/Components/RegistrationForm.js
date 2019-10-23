@@ -14,7 +14,7 @@ function RegistrationForm(props) {
         axios.post("https://ar-journal.herokuapp.com/createnewuser", userCredentials,  {headers: {"Content-Type": "application/json" }})
             .then(res => {
                 console.log(res);
-                props.history.push("/");
+                props.history.push("/login");
             })
             .catch(err => console.log(err.response))
     }
@@ -36,13 +36,13 @@ function RegistrationForm(props) {
                 </label>
                 
                 <label className='label'>Password:
-                <input className='input' type='text' name='password' placeholder='Password' onChange={changeHandler} value={userCredentials.password} required />
+                <input className='input' type='password' name='password' placeholder='Password' onChange={changeHandler} value={userCredentials.password} required />
                 </label>
               
                 <div>
                 <button className='button' type='submit'>Sign Up!</button>
                 </div>
-                <Link><p className='loginhere'>Already Registered? Login here</p></Link>
+                <Link to='/login'><p className='loginhere'>Already Registered? Login here</p></Link>
             </form>
         </div>
     );

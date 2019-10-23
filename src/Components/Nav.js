@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import LogoImg from '../assets/workout.png';
+import {Link} from 'react-router-dom';
 
 const NavBar = styled.nav`
     display: flex;
@@ -28,15 +29,6 @@ const NavRight = styled.div`
     align-items: center;
 `;
 
-const NavbarLink = styled.a`
-    padding-left: 1em;
-    text-decoration: none;
-    color: white;
-    &:hover {
-        color: #ff5b7b;
-    }
-`;
-
 const Logo = styled.img`
     width: 80%;
     height: 80%;
@@ -52,10 +44,7 @@ const Nav = () => {
                <NavTitle>Get Swole</NavTitle>
            </NavLeft>
            <NavRight>
-               <NavbarLink href="#">Home</NavbarLink>
-               <NavbarLink href="about.html">About</NavbarLink>
-               <NavbarLink href="#">Features</NavbarLink>
-               <NavbarLink href="#">FAQ</NavbarLink>
+               <Link to="/">Sign Up</Link>
            </NavRight>
        </NavBar>
     );
