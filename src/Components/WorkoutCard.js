@@ -3,9 +3,10 @@ import React from 'react';
 
 const WorkoutCard = ({ workout }) => {
    return (
-     <div id={workout.workoutid}>
-       <h1>{workout.day}</h1>
-       <h2>{workout.exerciseName}</h2>
+     <div id={workout.id}>
+       <h2>{workout.title}</h2>
+       <h3>{workout.exerciseName}</h3>
+       <p>{workout.day}</p>
        <p>{workout.sets}</p>
        <p>{workout.reps}</p>
        <p>{workout.weight}</p>
