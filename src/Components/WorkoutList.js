@@ -9,7 +9,7 @@ function WorkoutList() {
 
   useEffect(() => {
     axiosWithAuth()
-      .get('https://ar-journal.herokuapp.com/swagger-ui.html#/workout/all')
+      .get('https://ar-journal.herokuapp.com/workout/all', {headers: {"Content-Type": "application/json" }})
       .then(res => {
         console.log(res);
         setWorkouts(res.data);

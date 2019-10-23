@@ -5,10 +5,10 @@ import axios from "axios";
 const WorkoutForm = (props) => {
   
   const [workout, setworkout] = useState({
-    workoutName: '',
-    workoutDay: '', 
-    muscle: '',
-    exercise: '',
+    title: '',
+    day: '', 
+    muscleGroup: '',
+    exerciseName: '',
     weight: '',
     sets: '',
     reps: '',
@@ -17,8 +17,14 @@ const WorkoutForm = (props) => {
 
   const update = (e) => {
     e.preventDefault();
-     
-    }
+    axios.post("https://ar-journal.herokuapp.com/workout/new", workout,  {headers: {"Content-Type": "application/json" }})
+            .then(res => {
+                console.log(res);
+                props.history.push("/users");
+            })
+            .catch(err => console.log(err.response))
+    
+  }
 
     const handleChange = e => {
         setworkout({
@@ -30,13 +36,13 @@ const WorkoutForm = (props) => {
   return (
     <>
     <div className="container">
-    <h1>Update</h1>
+    <h1>Add Workout</h1>
       <form className="update-form" onSubmit={update}>
         <label className="label"> Workout Name:
         <input className="input"
         type="text"
-        name="workoutName"
-        value={workout.workoutName}
+        name="title"
+        value={workout.title}
         placeholder="Workout Name"
         onChange={handleChange}
         />
@@ -45,8 +51,8 @@ const WorkoutForm = (props) => {
       <label className="label">Workout Day:
       <input className="input"
         type="text"
-        name="workoutDay"
-        value={workout.workoutDay}
+        name="day"
+        value={workout.day}
         placeholder="Workout Day"
         onChange={handleChange}
         />
@@ -55,8 +61,8 @@ const WorkoutForm = (props) => {
         <label className="label">Exercise Name:
         <input className="input"
         type="text"
-        name="exercise"
-        value={workout.exercise}
+        name="exerciseName"
+        value={workout.exerciseName}
         placeholder="Exercise Name"
         onChange={handleChange}
         />
@@ -92,15 +98,15 @@ const WorkoutForm = (props) => {
         />
         </label>
 
-        <label className="label">Body Part:
-        <select className="select-input" name="muscle">
-        <option value="upperBody">Upper Body</option>
-        <option value="lowerBody">lower Body</option>
+        <label className="label">Muscle Group:
+        <select className="select-input" name="muscleGroup" onChange={handleChange}>
+        <option value='Upper Body'>Upper Body</option>
+        <option value='Lower Body'>Lower Body</option>
         </select>
         </label>
 
         <div>
-        <button className="button">Update!</button>
+        <button className="button">Add</button>
         </div>
       </form>
       </div>
