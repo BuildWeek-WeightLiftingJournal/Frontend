@@ -6,14 +6,14 @@ import axios from "axios";
 
 const AddWorkoutForm = (props) => {
   
-  const [workout, setworkout] = useState({
+  const [workout, setWorkout] = useState({
     title: '',
     day: '', 
     muscleGroup: '',
     exerciseName: '',
-    weight: '',
-    sets: '',
-    reps: '',
+    weight: 0,
+    sets: 0,
+    reps: 0,
     
   });
 
@@ -29,7 +29,7 @@ const AddWorkoutForm = (props) => {
   }
 
     const handleChange = e => {
-        setworkout({
+        setWorkout({
             ...workout,
             [e.target.name]: e.target.value
         })

@@ -39,6 +39,11 @@ const StyledLink = styled(Link)`
 `;
 
 const Nav = () => {
+
+    const logout = () => {
+        localStorage.removeItem('token');
+    };
+
     return (
         <NavBar>
            <NavLeft>
@@ -51,6 +56,7 @@ const Nav = () => {
                <StyledLink to="/">Sign Up</StyledLink>
                <StyledLink to="/login">Login</StyledLink>
                <StyledLink to="/workoutlist">My Workouts</StyledLink>
+               <StyledLink to="/" onClick={() => logout()}>Log Out</StyledLink>
 
            </NavRight>
        </NavBar>
