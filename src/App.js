@@ -6,7 +6,7 @@ import './App.css';
 import WorkoutList from './Components/WorkoutList';
 import LoginForm from "./Components/LoginForm";
 import AddWorkoutForm from "./Components/AddWorkoutForm";
-
+import EditWorkoutForm from './Components/EditWorkoutForm'
 
 function App() {
 
@@ -19,7 +19,7 @@ function App() {
       <Route path='/login' render={props => <LoginForm setUserID={setUserID} {...props} />} />
       <Route path='/workoutform' render={props => <AddWorkoutForm userID={userID} {...props} />} />
       <Route path='/workoutlist' render={props => <WorkoutList userID={userID} {...props} />} />
-
+      <Route path='/editworkout/:id' render={props => <EditWorkoutForm userID={userID} {...props} />}/>
     </div>
   );
 }

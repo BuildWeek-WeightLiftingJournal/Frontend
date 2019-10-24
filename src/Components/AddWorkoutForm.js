@@ -2,6 +2,7 @@
 import React, { useState } from "react";
 
 import axios from "axios";
+import { axiosWithAuth } from "../utils/axiosWithAuth";
 
 
 const AddWorkoutForm = (props) => {
@@ -19,7 +20,9 @@ const AddWorkoutForm = (props) => {
 
   const update = (e) => {
     e.preventDefault();
-    axios.post("https://ar-journal.herokuapp.com/workout/new", workout,  {headers: {"Content-Type": "application/json" }})
+    console.log(workout)
+    axiosWithAuth()
+    .post("https://ar-journal.herokuapp.com/workout/new", workout,  {headers: {"Content-Type": "application/json" }})
             .then(res => {
                 console.log(res);
                 props.history.push('/workoutlist');
@@ -29,11 +32,23 @@ const AddWorkoutForm = (props) => {
   }
 
     const handleChange = e => {
+<<<<<<< HEAD
         setWorkout({
+=======
+      
+        if (e.target.name === "weight" || e.target.name === "sets" || e.target.name === "reps" ){
+          setWorkout({ 
+          ...workout,
+            [e.target.name]: Number(e.target.value)
+        })}
+        else {
+          setWorkout({ 
+>>>>>>> master
             ...workout,
-            [e.target.name]: e.target.value
-        })
-    }
+              [e.target.name]: e.target.value
+          })
+        }}
+    
 
   return (
     <>

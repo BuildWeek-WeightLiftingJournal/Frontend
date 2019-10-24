@@ -1,7 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
 import Delete from '../assets/delete.svg';
-import { axiosWithAuth } from 'axios';
+import axios  from 'axios';
+import {Link} from 'react-router-dom';
+import { axiosWithAuth } from '../utils/axiosWithAuth';
 
 
 const StyledImg = styled.img`
@@ -21,6 +23,19 @@ const MG = styled.p`
   font-size: .8rem;
 `;
 
+<<<<<<< HEAD
+=======
+const deleteWorkout = workoutid => {
+  console.log(workoutid)
+  axiosWithAuth()
+      .delete(`https://ar-journal.herokuapp.com/workout/delete/${workoutid}`)
+      .then(res => {
+          console.log('workout was deleted', res);
+          window.location.reload()
+      })
+      .catch(err => console.log('delete workout error', err))
+};     
+>>>>>>> master
      
 const WorkoutCard = ({ workout }) => {
 
@@ -45,22 +60,20 @@ const WorkoutCard = ({ workout }) => {
   // };
 
    return (
-     <div>
+     
+     <Card id={workout.id}>
        <StyledImg 
         src={Delete} 
         alt='trashcan icon' 
-        onClick={()=> {
-          deleteWorkout();
-        }} 
+        onClick={() => deleteWorkout(workout.workoutid)} 
       />
-     <Card id={workout.id}>
-       {/* <button><Link to=`/editworkout/${workout.id}`>Edit</button> */}
+       <button><Link to={`/editworkout/${workout.workoutid}`}>Edit</Link> </button>
        <h2>{workout.title}</h2>
        <MG>({workout.muscleGroup})</MG>
        <p>{workout.day}</p>
        <p><strong>{workout.exerciseName}:</strong> {workout.sets} x {workout.reps} ({workout.weight}lbs)</p>
      </Card>
-    </div>
+    
    );
  };
 
