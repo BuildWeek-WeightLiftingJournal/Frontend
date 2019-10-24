@@ -57,7 +57,6 @@ function WorkoutList(props) {
         ))}
       </List>
     </div>
-    
   );
 }
 

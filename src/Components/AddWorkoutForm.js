@@ -113,8 +113,12 @@ const AddWorkoutForm = (props) => {
 
         <label className="label">Muscle Group:
         <select className="select-input" name="muscleGroup" onChange={handleChange}>
-        <option value='Upper Body'>Upper Body</option>
-        <option value='Lower Body'>Lower Body</option>
+        <option value='Muscle Group not selected'>Choose Muscle Group</option>
+        <option value='Chest'>Chest</option>
+        <option value='Back'>Back</option>
+        <option value='Shoulders'>Shoulders</option>
+        <option value='Arms'>Arms</option>
+        <option value='Legs'>Legs</option>
         </select>
         </label>
 
