@@ -51,7 +51,7 @@ function WorkoutList(props) {
       </div>
       <List>
         {workouts.map(workout => (
-        <WorkoutCard workout={workout} />
+        <WorkoutCard workout={workout} workouts={workouts} setWorkouts={setWorkouts} />
         ))}
       </List>
     </div>

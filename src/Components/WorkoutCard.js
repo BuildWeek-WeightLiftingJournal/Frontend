@@ -22,42 +22,21 @@ const Card = styled.div`
 const MG = styled.p`
   font-size: .8rem;
 `;
-
-<<<<<<< HEAD
-=======
-const deleteWorkout = workoutid => {
-  console.log(workoutid)
-  axiosWithAuth()
-      .delete(`https://ar-journal.herokuapp.com/workout/delete/${workoutid}`)
-      .then(res => {
-          console.log('workout was deleted', res);
-          window.location.reload()
-      })
-      .catch(err => console.log('delete workout error', err))
-};     
->>>>>>> master
+  
      
-const WorkoutCard = ({ workout }) => {
+const WorkoutCard = ({ workout, workouts, setWorkouts }) => {
 
   const deleteWorkout = workoutid => {
     axiosWithAuth()
-        .delete(`https://ar-journal.herokuapp.com/workout/delete/${workoutid}`)
+        .delete(`https://ar-journal.herokuapp.com/workout/delete/${workoutid}`, workout)
         .then(res => {
             console.log('workout was deleted', res);
-
+            console.log(workout)
+            let newWorkouts = workouts.filter(workout => workout.id !== workoutid)
+            setWorkouts(newWorkouts)
         })
         .catch(err => console.log('delete workout error', err))
   };  
-  // const deleteColor = colorToDelete => {
-  //   // make a delete request to delete this color
-  //   axiosWithAuth()
-  //     .delete(`/colors/${colorToDelete.id}`, colorToDelete.id)
-  //     .then(res => {
-  //       const deletedColors = colors.filter(color => colorToDelete.id !== color.id)
-  //       updateColors(deletedColors)
-  //     })
-  //     .catch(err => console.log('delete error', err))
-  // };
 
    return (
      

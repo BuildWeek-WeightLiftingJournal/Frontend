@@ -1,6 +1,4 @@
-
 import React, { useState } from "react";
-
 import axios from "axios";
 import { axiosWithAuth } from "../utils/axiosWithAuth";
 
@@ -28,13 +26,9 @@ const AddWorkoutForm = (props) => {
                 props.history.push('/workoutlist');
             })
             .catch(err => console.log(err.response))
-    
-  }
+      }
 
     const handleChange = e => {
-<<<<<<< HEAD
-        setWorkout({
-=======
       
         if (e.target.name === "weight" || e.target.name === "sets" || e.target.name === "reps" ){
           setWorkout({ 
@@ -43,7 +37,6 @@ const AddWorkoutForm = (props) => {
         })}
         else {
           setWorkout({ 
->>>>>>> master
             ...workout,
               [e.target.name]: e.target.value
           })
@@ -128,10 +121,7 @@ const AddWorkoutForm = (props) => {
       </form>
       </div>
     </>
-  );
+    )
 };
 
-
 export default AddWorkoutForm;
-
-

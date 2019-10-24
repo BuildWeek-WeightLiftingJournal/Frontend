@@ -5,7 +5,7 @@ import Nav from './Components/Nav';
 import './App.css';
 import WorkoutList from './Components/WorkoutList';
 import LoginForm from "./Components/LoginForm";
-import AddWorkoutForm from "./Components/AddWorkoutForm";
+import AddWorkoutForm from './Components/AddWorkoutForm';
 import EditWorkoutForm from './Components/EditWorkoutForm'
 
 function App() {
