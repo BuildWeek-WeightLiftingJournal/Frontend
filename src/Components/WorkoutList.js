@@ -40,7 +40,9 @@ function WorkoutList(props) {
       })
       .catch(err => console.error(err));
   }, []);
-
+  useEffect(()=> { 
+    setWorkouts(workouts)
+  },[workouts])
   return (
     <div>
 
@@ -51,7 +53,7 @@ function WorkoutList(props) {
       </div>
       <List>
         {workouts.map(workout => (
-        <WorkoutCard workout={workout} />
+        <WorkoutCard setWorkouts = {setWorkouts} workout={workout} workouts={workouts} />
         ))}
       </List>
     </div>

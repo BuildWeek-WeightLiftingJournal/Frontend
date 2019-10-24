@@ -12,9 +12,9 @@ const AddWorkoutForm = (props) => {
     day: '', 
     muscleGroup: '',
     exerciseName: '',
-    weight: 0,
-    sets: 0,
-    reps: 0,
+    weight: '',
+    sets: '',
+    reps: '',
     
   });
 

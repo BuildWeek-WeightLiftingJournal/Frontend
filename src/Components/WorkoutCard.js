@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import styled from 'styled-components';
 import Delete from '../assets/delete.svg';
 import axios  from 'axios';
@@ -23,19 +23,26 @@ const MG = styled.p`
   font-size: .8rem;
 `;
 
-const deleteWorkout = workoutid => {
-  console.log(workoutid)
-  axiosWithAuth()
-      .delete(`https://ar-journal.herokuapp.com/workout/delete/${workoutid}`)
-      .then(res => {
-          console.log('workout was deleted', res);
-          window.location.reload()
-      })
-      .catch(err => console.log('delete workout error', err))
-};     
+
      
-const WorkoutCard = ({ workout }) => {
-   return (
+const WorkoutCard = ({ workout, workouts, setWorkouts }) => {
+  const deleteWorkout = workoutid => {
+    console.log(workoutid)
+    axiosWithAuth()
+        .delete(`https://ar-journal.herokuapp.com/workout/delete/${workoutid}`)
+        .then(res => {
+            console.log('workout was deleted', res);
+            window.location.reload()
+  
+            let newWorkouts =  workouts.filter(workout => {
+              return workout.id !== workoutid
+            })
+            setWorkouts(newWorkouts) 
+        })
+        .catch(err => console.log('delete workout error', err))
+  };     
+  
+  return (
      
      <Card id={workout.id}>
        <StyledImg 
