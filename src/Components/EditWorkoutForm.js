@@ -1,10 +1,14 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-
+import {useParams} from "react-router-dom"
+import { axiosWithAuth } from "../utils/axiosWithAuth";
 
 const EditWorkoutForm = (props) => {
   
+  let {id} = useParams()
+  console.log(id)
   const [workout, setworkout] = useState({
+    workoutid:id,
     title: '',
     day: '', 
     muscleGroup: '',
@@ -17,10 +21,13 @@ const EditWorkoutForm = (props) => {
 
   const update = (e) => {
     e.preventDefault();
-    axios.post("https://ar-journal.herokuapp.com/workout/new", workout,  {headers: {"Content-Type": "application/json" }})
+    console.log('update')
+    console.log(workout)
+    
+    axiosWithAuth().put(`https://ar-journal.herokuapp.com/workout/update/${workout.workoutid}`, workout,  {headers: {"Content-Type": "application/json" }})
             .then(res => {
                 console.log(res);
-                props.history.push('/users');
+                props.history.push('/workoutlist');
             })
             .catch(err => console.log(err.response))
     
@@ -106,7 +113,7 @@ const EditWorkoutForm = (props) => {
         </label>
 
         <div>
-        <button className="button">Submit</button>
+        <button className="button" type="submit">Submit</button>
         </div>
       </form>
       </div>
