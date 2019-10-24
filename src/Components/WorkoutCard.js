@@ -1,6 +1,7 @@
 import React, {useEffect} from 'react';
 import styled from 'styled-components';
 import Delete from '../assets/delete.svg';
+import Edit from '../assets/edit.svg';
 import axios  from 'axios';
 import {Link} from 'react-router-dom';
 import { axiosWithAuth } from '../utils/axiosWithAuth';
@@ -22,6 +23,12 @@ const Card = styled.div`
 const MG = styled.p`
   font-size: .8rem;
 `;
+
+const IconDiv = styled.div`
+  display: flex;
+  justify-content: space-between;
+`;
+
 
 
      
@@ -45,12 +52,10 @@ const WorkoutCard = ({ workout, workouts, setWorkouts }) => {
   return (
      
      <Card id={workout.id}>
-       <StyledImg 
-        src={Delete} 
-        alt='trashcan icon' 
-        onClick={() => deleteWorkout(workout.workoutid)} 
-      />
-       <button><Link to={`/editworkout/${workout.workoutid}`}>Edit</Link> </button>
+       <IconDiv>
+        <StyledImg src={Delete} alt='trashcan icon' onClick={() => deleteWorkout(workout.workoutid)} />
+        <Link to={`/editworkout/${workout.workoutid}`}><StyledImg src={Edit} alt='edit icon' /></Link>
+       </IconDiv>
        <h2>{workout.title}</h2>
        <MG>({workout.muscleGroup})</MG>
        <p>{workout.day}</p>
