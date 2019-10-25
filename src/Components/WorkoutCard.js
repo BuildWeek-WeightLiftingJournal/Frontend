@@ -39,10 +39,8 @@ const WorkoutCard = ({ workout, workouts, setWorkouts }) => {
         .delete(`https://ar-journal.herokuapp.com/workout/delete/${workoutid}`)
         .then(res => {
             console.log('workout was deleted', res);
-            window.location.reload()
-  
-            let newWorkouts =  workouts.filter(workout => {
-              return workout.id !== workoutid
+            const newWorkouts =  workouts.filter(workoutObj => {
+              return workoutObj.workoutid !== workoutid;
             })
             setWorkouts(newWorkouts) 
         })
